@@ -63,6 +63,6 @@ builder:
 
 # SSH Config
 ssh:
-  user: ms
+  user: your-user
   port: "2222"
   log_level: fatal
