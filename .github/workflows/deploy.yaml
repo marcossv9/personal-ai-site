@@ -1,0 +1,65 @@
+#
+# Description: workflow for deploying with Kamal
+#
+
+name: Deploy with Kamal
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+  packages: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        id: checkout
+        uses: actions/checkout@v5.0.0
+
+      - name: Set up Ruby
+        id: setup-ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.5"
+          bundler-cache: true
+
+      - name: Install Kamal
+        id: install-kamal
+        run: |
+          gem install kamal
+          kamal version
+
+      - name: Start SSH agent and add key
+        id: ssh-agent
+        uses: webfactory/ssh-agent@v0.9.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v3.11.1
+
+      - name: Expose GitHub Runtime for cache
+        id: github-runtime
+        uses: crazy-max/ghaction-github-runtime@v3.1.0
+
+      - name: Deploy Ollama with Kamal
+        id: deploy-ollama-with-kamal
+        env:
+          KAMAL_REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          kamal deploy -c config/deploy.ollama.yml
+
+      - name: Deploy Website with Kamal
+        id: deploy-website-with-kamal
+        env:
+          KAMAL_REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          kamal deploy -c config/deploy.website.yml

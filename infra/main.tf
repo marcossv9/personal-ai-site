@@ -1,7 +1,7 @@
 # Create ssh key in hcloud
 resource "hcloud_ssh_key" "main" {
-  name       = "your-ssh-key"
-  public_key = file("~/.ssh/your-key.pub")
+  name       = "ms-ssh-key"
+  public_key = file("~/.ssh/hetzner/hetzner_cloud.pub")
   labels = {
     "env" : "dev"
   }
