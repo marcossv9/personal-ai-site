@@ -1,2 +1,46 @@
-.env
-.env.build
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pdb
+*.egg-info/
+.venv/
+venv/
+
+# Flask
+instance/
+.webassets-cache
+
+# VSCode
+.vscode/
+
+# Ollama model cache and keys
+ollama/
+ollama/ollama/
+ollama/ollama/models/
+ollama/ollama/models/blobs/
+ollama/ollama/models/manifests/
+ollama/ollama/id_ed25519*
+
+# Docker
+*.log
+db-data/
+
+# System
+.DS_Store
+Thumbs.db
+
+# Misc
+*.swp
+*.swo
+
+# Ignore data files (if not needed in repo)
+data/*.txt
+!data/marcos_info.txt
+
+tmp_*.txt
+
+# Terraform
+terraform

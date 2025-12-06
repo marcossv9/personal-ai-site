@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal AI Assistant</title>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <!-- Standard favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/static/favicons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/static/favicons/favicon-192x192.png">
+
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/static/favicons/favicon-180x180.png">
+
+  <!-- Legacy favicon.ico -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+  <meta name="description" content="Ask my AI assistant anything about my professional experience and background.">
+  <meta name="keywords" content="AI Assistant, Personal Website, Professional Experience, Resume, Portfolio">
+  <meta name="author" content="Personal AI Assistant">
+  <meta property="og:title" content="Ask anything about me">
+  <meta property="og:description" content="Interact with my AI assistant and learn about my professional expertise.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://your-domain.com/">
+  <meta property="og:image" content="/static/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ask anything about me">
+  <meta name="twitter:description" content="Interact with my AI assistant and learn about my professional expertise.">
+  <meta name="twitter:image" content="/static/og-image.png">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Ask anything about me</h1>
+    <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem;">
+      <div class="custom-dropdown" id="customDropdown">
+        <div class="dropdown-selected" id="dropdownSelected">Select a sample question...</div>
+        <ul class="dropdown-options" id="dropdownOptions" style="display:none;">
+          <li>What programming languages do I use?</li>
+          <li>What Infrastructure as Code (IaC) tools do I use?</li>
+          <li>What Cloud Native tools do I use?</li>
+          <li>Which container orchestration platforms am I experienced with?</li>
+          <li>What monitoring tools have I worked with?</li>
+          <li>Which CI/CD tools do I know?</li>
+          <li>What is my professional background?</li>
+          <li>What security tools have I implemented?</li>
+          <li>Which companies have I worked for?</li>
+          <li>What cloud services do I have experience with?</li>
+          <li>What databases have I managed?</li>
+          <li>What operating systems am I familiar with?</li>
+        </ul>
+      </div>
+      <input id="questionInput" type="text" placeholder="Type your question or select one above..." />
+    </div>
+    <button onclick="sendQuestion()">Ask</button>
+    <div class="response-box" id="answerBox"></div>
+    <footer>
+      <hr>
+      <div class="github-section">
+        <p class="project-info">This project was built to learn about <a href="https://ollama.ai"
+            target="_blank">Ollama</a>, <a href="https://ollama.ai/library" target="_blank">AI models</a>, and <a
+            href="https://flask.palletsprojects.com" target="_blank">Flask</a>. Most of the HTML and
+          JavaScript was written by AI.</p>
+        <div class="github-buttons">
+          <a href="https://github.com/marcossv9/personal-ai-site" target="_blank" class="github-button">
+            ⭐ Star this project
+          </a>
+        </div>
+      </div>
+      <hr>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
+        <a href="https://github.com/your-username" target="_blank">GitHub</a>
+      </div>
+      <div class="disclaimer" style="margin-top:1rem; font-size:0.95em; color:#888; text-align:center;">
+        <p><strong>Disclaimer:</strong> The AI model may respond slowly because it runs on a small VPS using only a CPU.
+          For faster results, consider using a GPU-based VPS.</p>
+      </div>
+    </footer>
+  </div>
+
+</body>
+
+</html>

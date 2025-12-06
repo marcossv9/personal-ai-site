@@ -1,0 +1,12 @@
+FROM gemma3:1b-it-qat
+
+# set the temperature to 1 [higher is more creative, lower is more coherent]
+PARAMETER temperature 0
+
+# set a lower context
+PARAMETER num_ctx 2048
+
+# set the system message
+SYSTEM """
+You are a personal assistant. Answer as the assistant, only.
+"""
